@@ -8,6 +8,14 @@ import java.util.Scanner;
 public class Main {
   public static void main(String[] args) {
     int escolha;
+    int cod;
+    String cpf;
+    String nomeFilme;
+    int numPoltrona;
+    float valor = 0;
+    boolean[] poltronaDisp = new boolean[120];
+    boolean endWhile = false;;
+
     Scanner teclado = new Scanner(System.in);
     ArrayList<Ingresso> sala = new ArrayList<Ingresso>();
 
@@ -27,18 +35,25 @@ public class Main {
       //dados a serem passados(valor,numPoltrona)
       case 1:
         System.out.println("############# Adiquirindo seu ingresso #############");
-        System.out.println("informe seu cpf:");
+
+        System.out.println("informe seu cpf (modelo XXX.XXX.XXX-XX):");
         Ingresso.setCpf(teclado.nextLine());
+        cpf = Ingresso.getCpf();
+
         System.out.println("informe o nome do filme que deseja assistir:");
         Ingresso.setNomeFilme(teclado.nextLine());
+        nomeFilme = Ingresso.getNomeFilme();
+
         do{
           System.out.println("Escolha uma poltrona de 1 a 120:");
           Ingresso.setNumPoltrona(teclado.nextInt());
           Ingresso.verPoltrDisp();
-        }while(numPoltrona <=0 || numPoltrona >=121 || poltronaDisp[numPoltrona] != true );
+        }while(endWhile == false);
+
         System.out.println("Se você deseja pagar a entrada inteira(R$16,00) digite 1");
         System.out.println("Se você deseja pagar a entrada meia(R$8,00) digite 2");
         Ingresso.setValor(teclado.nextInt());
+
         System.out.println("aqui estão suas informações:");
         System.out.println("valor do ingresso: " valor);
         System.out.println("numero da poltrona:" numPoltrona);
