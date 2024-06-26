@@ -2,6 +2,8 @@
 
 // import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 
 public class Main {
   public static void main(String[] args) {
@@ -19,26 +21,44 @@ public class Main {
     System.out.println("#######################################");
     System.out.println("Faça sua escolha:");
     escolha = teclado.nextInt();
-    
+
     switch(escolha){
+      //pedir dados (cpf,nomeFilme,numPoltrona)
+      //dados a serem passados(valor,numPoltrona)
       case 1:
-        System.out.println("Adiquirindo seu ingresso");
+        System.out.println("############# Adiquirindo seu ingresso #############");
+        System.out.println("informe seu cpf:");
+        Ingresso.setCpf(teclado.nextLine());
+        System.out.println("informe o nome do filme que deseja assistir:");
+        Ingresso.setNomeFilme(teclado.nextLine());
+        do{
+          System.out.println("Escolha uma poltrona de 1 a 120:");
+          Ingresso.setNumPoltrona(teclado.nextInt());
+          Ingresso.verPoltrDisp();
+        }while(numPoltrona <=0 || numPoltrona >=121 || poltronaDisp[numPoltrona] != true );
+        System.out.println("Se você deseja pagar a entrada inteira(R$16,00) digite 1");
+        System.out.println("Se você deseja pagar a entrada meia(R$8,00) digite 2");
+        Ingresso.setValor(teclado.nextInt());
+        System.out.println("aqui estão suas informações:");
+        System.out.println("valor do ingresso: " valor);
+        System.out.println("numero da poltrona:" numPoltrona);
         break;
+
       case 2:
-        System.out.println("Alterando seu ingresso");
+        System.out.println("############# Alterando seu ingresso #############");
         break;
+
       case 3:
-        System.out.println("Desistindo do seu ingresso");
+        System.out.println("############# Desistindo do seu ingresso #############");
         break;
+
       case 4:
-        System.out.println("Fim do programa!");
+        System.out.println("############# Fim do programa! #############");
         break;
+
       default:
         System.out.println("Você escolheu uma opção inválida, digite novamente!");
     }
-
-
-
     }while(opção!=4);
   }
 
