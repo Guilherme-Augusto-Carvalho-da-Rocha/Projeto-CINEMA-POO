@@ -9,8 +9,10 @@ public class Ingresso{
   private boolean[] poltronaDisp = new boolean[120];
   private boolean endWhile = false;
   
-  for(int i = 0; i+1 <= 120; i++){
-    poltronaDisp[i] = true;
+  public void ResetPoltrDisp(){
+    for(int i = 0; i+1 <= 120; i++){
+      poltronaDisp[i] = true;
+  }
   }
 
   public void setCpf(String cpf){
@@ -45,13 +47,16 @@ public class Ingresso{
   
   public void verPoltrDisp() {
     if(poltronaDisp[numPoltrona-1] == false){
-          System.out.println("você escolheu uma poltrona já ocupada");
+          System.out.println("você escolheu uma poltrona já ocupada, tente novamente\n");
         } else if(numPoltrona <=0 || numPoltrona >=121){
-          System.out.println("você escolheu uma poltrona inexistente");
+          System.out.println("você escolheu uma poltrona inexistente, tente novamente\n");
         } else if(poltronaDisp[numPoltrona-1] == true){
-          System.out.println("você escolheu uma poltrona válida");
-          poltronaDisp[numPoltrona] = true;
+          System.out.println("você escolheu uma poltrona válida\n");
+          poltronaDisp[numPoltrona-1] = true;
           endWhile = true;
         }
+  }
+  public boolean getEndWhile{
+    return this.endWhile;
   }
 }
